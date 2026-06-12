@@ -358,7 +358,7 @@
         data-ko="이메일 보내기"
         data-en="Send Email"
         data-ja="メールを送る">
-      이메일 보내기
+      <span class="btn-label">이메일 보내기</span>
       <span class="btn-contact-info">kameido90@naver.com</span>
     </a>
     <button class="btn btn-phone"
@@ -367,7 +367,7 @@
             data-ko="전화 걸기"
             data-en="Call"
             data-ja="電話をかける">
-      전화 걸기
+      <span class="btn-label">전화 걸기</span>
       <span class="btn-contact-info">010.8875.9203</span>
     </button>
   </div>
@@ -417,7 +417,12 @@
       document.querySelectorAll('.lang-btn')
         .forEach(b => b.classList.toggle('active', b === btn));
       document.querySelectorAll('[data-ko]').forEach(el => {
-        el.textContent = el.dataset[currentLang] || el.dataset.ko;
+        const label = el.querySelector('.btn-label');
+        if (label) {
+          label.textContent = el.dataset[currentLang] || el.dataset.ko;
+        } else {
+          el.textContent = el.dataset[currentLang] || el.dataset.ko;
+        }
       });
     });
   });
